@@ -4,5 +4,9 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+<typeAliases>
+	<package name="org.zerock.domain"></package>
+</typeAliases>
+
 
 </configuration>
