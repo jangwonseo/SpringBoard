@@ -44,11 +44,34 @@ public class BoardController {
 		logger.info("show all list");
 		model.addAttribute("list",service.listAll());
 	}
+	
 	@RequestMapping(value="/read",method=RequestMethod.GET)
 	public void read(@RequestParam("bno") int bno, Model model) throws Exception{
 		//addAttribute에 아무런 이름없이 데이터를 넣으면 자동으로 들어가는 값 클래스 이름을 소문자로 시작해서 사요하게됨
 		//여기서는 boardVO
 		model.addAttribute(service.read(bno));
+	}
+	
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception{
+		service.remove(bno);
+		rttr.addFlashAttribute("msg","success");
+		return "redirect:/board/listAll";
+	}
+	
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public void modifyGET(int bno, Model model) throws Exception{
+		model.addAttribute(service.read(bno));
+	}
+	
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modifyPOST(BoardVO board, RedirectAttributes rttr) throws Exception{
+		logger.info("mod post..............................");
+		
+		service.modify(board);
+		rttr.addFlashAttribute("msg","success");
+		
+		return "redirect:/board/listAll";
 	}
 	
 	
