@@ -31,5 +31,6 @@
 
 </div>
 
-
+</div>
+<!-- /.content wrapper  -->
 <%@ include file="../include/footer.jsp"%>
