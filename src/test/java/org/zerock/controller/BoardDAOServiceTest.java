@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.junit.Test;
@@ -9,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -47,9 +50,22 @@ public class BoardDAOServiceTest {
 //		bs.modify(board);
 //	}
 
+//	@Test
+//	public void testDelete() throws Exception{
+//		bs.remove(1);
+//	}
+	
 	@Test
-	public void testDelete() throws Exception{
-		bs.remove(1);
+	public void testPageCriteria() throws Exception{
+		Criteria cri = new Criteria();
+		cri.setPage(2);
+		cri.setPerPageNum(20);
+		
+		List<BoardVO> list = bs.listCriteria(cri);
+		logger.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+		for(BoardVO boardVO : list){
+			logger.info(boardVO.toString());
+		}
 	}
 
 }
