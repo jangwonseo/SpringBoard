@@ -34,6 +34,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="listCriteria" resultType="BoardVO">
 		<![CDATA[select bno,title,content,regdate,viewcnt from tbl_board where bno>0 order by bno desc, regdate desc limit #{pageStart}, #{perPageNum}]]>
 	</select>
+	
+	<select id="countPaging" resultType="int">
+		<![CDATA[select count(bno) from tbl_board where bno>0]]>
+	
+	</select>
 
 
 </mapper>
