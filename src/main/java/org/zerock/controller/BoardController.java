@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,7 +50,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/read",method=RequestMethod.GET)
 	public void read(@RequestParam("bno") int bno, Model model) throws Exception{
-		//addAttribute에 아무런 이름없이 데이터를 넣으면 자동으로 들어가는 값 클래스 이름을 소문자로 시작해서 사요하게됨
+		//addAttribute에 아무런 이름없이 데이터를 넣으면 자동으로 들어가는 값 클래스 이름을 소문자로 시작해서 사용하게됨
 		//여기서는 boardVO
 		model.addAttribute(service.read(bno));
 	}
@@ -96,5 +97,10 @@ public class BoardController {
 		pageMaker.setTotalCount(service.listCountCriteria(cri));
 		
 		model.addAttribute("pageMaker",pageMaker);
+	}
+	
+	@RequestMapping(value="/readPage", method=RequestMethod.GET)
+	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri, Model model) throws Exception{
+		model.addAttribute(service.read(bno));
 	}
 }
