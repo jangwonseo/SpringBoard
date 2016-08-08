@@ -43,10 +43,10 @@ public class BoardDAOServiceTest {
 //	@Test
 //	public void testUpdate() throws Exception{
 //		BoardVO board = new BoardVO();
-//		board.setBno(1);
-//		board.setTitle("수정된 글입니다.");
-//		board.setContent("수정된 내용입낟.");
-//		board.setWriter("창지");
+//		board.setBno(2);
+//		board.setTitle("fdfdfdfd");
+//		board.setContent("dfdf.");
+//		board.setWriter("rrrrrrrrrr");
 //		bs.modify(board);
 //	}
 
@@ -55,17 +55,17 @@ public class BoardDAOServiceTest {
 //		bs.remove(1);
 //	}
 	
-	@Test
-	public void testPageCriteria() throws Exception{
-		Criteria cri = new Criteria();
-		cri.setPage(2);
-		cri.setPerPageNum(20);
-		
-		List<BoardVO> list = bs.listCriteria(cri);
-		logger.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-		for(BoardVO boardVO : list){
-			logger.info(boardVO.toString());
-		}
-	}
+//	@Test
+//	public void testPageCriteria() throws Exception{
+//		Criteria cri = new Criteria();
+//		cri.setPage(2);
+//		cri.setPerPageNum(20);
+//		
+//		List<BoardVO> list = bs.listCriteria(cri);
+//		logger.info("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+//		for(BoardVO boardVO : list){
+//			logger.info(boardVO.toString());
+//		}
+//	}
 
 }
